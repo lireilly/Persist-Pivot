@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persist or Pivot: Frosty Data Inc. Business Model Canvas Tutorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+  :root{
+    --nu-black:#000000;
+    --nu-white:#ffffff;
+    --nu-red:#C8102E;
+    --nu-gold:#A4804A;
+    --grey-100:#F4F4F4;
+    --grey-300:#D8D8D8;
+    --grey-600:#5B5B5B;
+    --grey-800:#242424;
+    --focus:#0B4FDD;
+    --radius:2px;
+    --max-w:840px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:auto;}
+
+  body{
+    margin:0;
+    font-family:'Lato', Arial, Helvetica, sans-serif;
+    color:var(--nu-black);
+    background:var(--nu-white);
+    line-height:1.55;
+    font-size:1.05rem;
+  }
+
+  /* ---------- Accessibility helpers ---------- */
+  .visually-hidden{
+    position:absolute;
+    width:1px;height:1px;
+    overflow:hidden;
+    clip:rect(0 0 0 0);
+    white-space:nowrap;
+  }
+
+  a.skip-link{
+    position:absolute;
+    left:-9999px;
+    top:0;
+    background:var(--nu-black);
+    color:var(--nu-white);
+    padding:.75rem 1.25rem;
+    z-index:1000;
+    font-weight:700;
+  }
+  a.skip-link:focus{
+    left:0;
+  }
+
+  *:focus-visible{
+    outline:3px solid var(--focus);
+    outline-offset:2px;
+  }
+  /* Ensure focus is always visible even without :focus-visible support */
+  *:focus{
+    outline:3px solid var(--focus);
+    outline-offset:2px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{
+      animation-duration:0.001ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:0.001ms !important;
+    }
+  }
+
+  /* ---------- Layout shell ---------- */
+  header.site-header{
+    background:var(--nu-black);
+    color:var(--nu-white);
+    padding:1.25rem 1.5rem;
+    border-bottom:6px solid var(--nu-red);
+  }
+  .header-inner{
+    max-width:var(--max-w);
+    margin:0 auto;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:.5rem;
+  }
+  .brand-mark{
+    font-weight:900;
+    letter-spacing:.02em;
+    font-size:1rem;
+    text-transform:uppercase;
+    color:var(--nu-white);
+  }
+  .brand-mark span{color:#ff6b7d;} /* lighter red on black for AAA contrast on dark bg */
+
+  main{
+    max-width:var(--max-w);
+    margin:0 auto;
+    padding:1.75rem 1.5rem 4rem;
+  }
+
+  h1{
+    font-size:1.7rem;
+    font-weight:900;
+    margin:0 0 .35rem;
+    line-height:1.2;
+  }
+  h2{
+    font-size:1.35rem;
+    font-weight:900;
+    margin:0 0 .5rem;
+    border-left:6px solid var(--nu-red);
+    padding-left:.65rem;
+  }
+  h3{
+    font-size:1.05rem;
+    font-weight:700;
+    margin:1.25rem 0 .35rem;
+  }
+  p{margin:0 0 1rem;}
+
+  .lede{
+    font-size:1.05rem;
+    color:var(--grey-800);
+  }
+
+  .card{
+    border:2px solid var(--nu-black);
+    border-radius:var(--radius);
+    padding:1.25rem 1.25rem 1.5rem;
+    margin-bottom:1.5rem;
+    background:var(--nu-white);
+  }
+
+  .notice{
+    border:2px solid var(--nu-gold);
+    background:#FBF6EE;
+    padding:1rem 1.1rem;
+    border-radius:var(--radius);
+    margin-bottom:1.5rem;
+  }
+  .notice h3{margin-top:0;}
+
+  /* ---------- Progress ---------- */
+  .progress-wrap{
+    margin-bottom:1.75rem;
+  }
+  ol.progress-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:.4rem;
+  }
+  ol.progress-list li{
+    flex:1 1 auto;
+    min-width:110px;
+    text-align:center;
+    font-size:.85rem;
+    font-weight:700;
+    padding:.5rem .35rem;
+    border:2px solid var(--grey-600);
+    border-radius:var(--radius);
+    color:var(--grey-800);
+    background:var(--nu-white);
+  }
+  ol.progress-list li.is-current{
+    border-color:var(--nu-black);
+    color:var(--nu-black);
+    background:var(--grey-100);
+  }
+  ol.progress-list li.is-done{
+    border-color:var(--nu-red);
+    color:var(--nu-white);
+    background:var(--nu-red);
+  }
+  ol.progress-list li .step-status{
+    display:block;
+    font-size:.72rem;
+    font-weight:400;
+    margin-top:.15rem;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+  }
+
+  /* ---------- Locked summary trail ---------- */
+  .locked-trail{
+    margin-bottom:1.75rem;
+  }
+  .locked-item{
+    border:2px solid var(--grey-300);
+    border-left:6px solid var(--nu-black);
+    border-radius:var(--radius);
+    padding:.85rem 1rem;
+    margin-bottom:.75rem;
+    background:var(--grey-100);
+  }
+  .locked-item .locked-cat{
+    font-weight:900;
+    text-transform:none;
+    font-size:.95rem;
+    margin-bottom:.15rem;
+  }
+  .locked-item .locked-choice{
+    font-weight:700;
+  }
+  .tag{
+    display:inline-block;
+    font-size:.75rem;
+    font-weight:900;
+    padding:.15rem .5rem;
+    border-radius:var(--radius);
+    margin-right:.5rem;
+    border:2px solid var(--nu-black);
+  }
+  .tag-pe{background:var(--nu-white); color:var(--nu-black);}
+  .tag-pi{background:var(--nu-black); color:var(--nu-white);}
+  .tag-locked{
+    background:var(--nu-white);
+    border-color:var(--grey-600);
+    color:var(--grey-800);
+  }
+
+  /* ---------- Options / fieldset ---------- */
+  fieldset{
+    border:none;
+    padding:0;
+    margin:0 0 1.25rem;
+  }
+  legend{
+    font-weight:900;
+    font-size:1rem;
+    padding:0;
+    margin-bottom:.75rem;
+  }
+  .option{
+    display:block;
+    border:2px solid var(--nu-black);
+    border-radius:var(--radius);
+    padding:1rem 1rem 1rem 3.25rem;
+    margin-bottom:.85rem;
+    position:relative;
+    cursor:pointer;
+    min-height:44px;
+  }
+  .option:hover{ background:var(--grey-100); }
+  .option input[type="radio"]{
+    position:absolute;
+    left:1rem;
+    top:1.15rem;
+    width:22px;
+    height:22px;
+    margin:0;
+    cursor:pointer;
+  }
+  .option.is-selected{
+    background:#FFF1F3;
+    border-color:var(--nu-red);
+    border-width:3px;
+  }
+  .option .opt-head{
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+    flex-wrap:wrap;
+    margin-bottom:.35rem;
+  }
+  .option .opt-title{
+    font-weight:900;
+    font-size:1.02rem;
+  }
+  .option .opt-modifier{
+    font-weight:700;
+    font-size:.9rem;
+    border:2px solid var(--nu-black);
+    padding:.05rem .5rem;
+    border-radius:var(--radius);
+  }
+  .option .opt-desc{
+    margin:0;
+    color:var(--grey-800);
+    font-size:.97rem;
+  }
+  .option input:disabled{cursor:not-allowed;}
+  .option.is-disabled{
+    opacity:.55;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    font-family:inherit;
+    font-weight:900;
+    font-size:1rem;
+    padding:.85rem 1.5rem;
+    border-radius:var(--radius);
+    border:2px solid var(--nu-black);
+    background:var(--nu-black);
+    color:var(--nu-white);
+    cursor:pointer;
+    min-height:44px;
+  }
+  .btn:hover:not(:disabled){background:var(--grey-800);}
+  .btn:disabled{
+    background:var(--grey-300);
+    border-color:var(--grey-300);
+    color:var(--grey-600);
+    cursor:not-allowed;
+  }
+  .btn-secondary{
+    background:var(--nu-white);
+    color:var(--nu-black);
+  }
+  .btn-secondary:hover:not(:disabled){background:var(--grey-100);}
+  .btn-accent{
+    background:var(--nu-black);
+    border-color:var(--nu-red);
+    border-width:3px;
+    color:var(--nu-white);
+  }
+  .btn-accent:hover:not(:disabled){background:var(--grey-800);}
+
+  .btn-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.75rem;
+    margin-top:1.25rem;
+  }
+
+  /* ---------- Team names ---------- */
+  .name-field{
+    display:flex;
+    gap:.6rem;
+    margin-bottom:.75rem;
+    align-items:center;
+  }
+  .name-field label{
+    flex:0 0 auto;
+    font-weight:700;
+    min-width:110px;
+  }
+  input[type="text"]{
+    font-family:inherit;
+    font-size:1rem;
+    padding:.6rem .7rem;
+    border:2px solid var(--nu-black);
+    border-radius:var(--radius);
+    flex:1 1 auto;
+    min-height:44px;
+  }
+  .remove-name-btn{
+    background:var(--nu-white);
+    border:2px solid var(--grey-600);
+    color:var(--grey-800);
+    border-radius:var(--radius);
+    font-weight:700;
+    padding:.5rem .7rem;
+    cursor:pointer;
+    min-height:44px;
+  }
+  .remove-name-btn:hover{border-color:var(--nu-black); color:var(--nu-black);}
+
+  /* ---------- Summary table ---------- */
+  table.summary-table{
+    width:100%;
+    border-collapse:collapse;
+    margin:1rem 0 1.5rem;
+  }
+  table.summary-table caption{
+    text-align:left;
+    font-weight:900;
+    margin-bottom:.5rem;
+  }
+  table.summary-table th, table.summary-table td{
+    border:2px solid var(--nu-black);
+    padding:.65rem .75rem;
+    text-align:left;
+    font-size:.95rem;
+    vertical-align:top;
+  }
+  table.summary-table th{
+    background:var(--nu-black);
+    color:var(--nu-white);
+  }
+  .score-box{
+    border:3px solid var(--nu-black);
+    padding:1.25rem;
+    border-radius:var(--radius);
+    text-align:center;
+    margin-bottom:1.5rem;
+    background:var(--grey-100);
+  }
+  .score-box .score-num{
+    font-size:2.75rem;
+    font-weight:900;
+    color:var(--nu-red);
+    display:block;
+    line-height:1;
+  }
+  .score-box .score-label{
+    font-weight:700;
+    font-size:.95rem;
+    text-transform:none;
+  }
+
+  footer.site-footer{
+    border-top:2px solid var(--grey-300);
+    padding:1.5rem;
+    text-align:center;
+    font-size:.85rem;
+    color:var(--grey-800);
+  }
+
+  .status-region{
+    font-size:.9rem;
+    font-weight:700;
+    color:var(--grey-800);
+    margin-bottom:.5rem;
+  }
+
+  .restart-link{
+    display:inline-block;
+    margin-top:2rem;
+    font-weight:700;
+    color:var(--grey-800);
+    background:none;
+    border:none;
+    text-decoration:underline;
+    cursor:pointer;
+    padding:.5rem 0;
+    font-family:inherit;
+    font-size:.9rem;
+    min-height:44px;
+  }
+  .restart-link:hover{color:var(--nu-black);}
+
+  ul.plain{
+    padding-left:1.4rem;
+    margin:0 0 1rem;
+  }
+  ul.plain li{margin-bottom:.4rem;}
+
+  .error-text{
+    color:var(--nu-red);
+    font-weight:700;
+    font-size:.95rem;
+    margin-top:-.5rem;
+    margin-bottom:1rem;
+  }
+
+  @media (max-width:520px){
+    .name-field{flex-wrap:wrap;}
+    .name-field label{min-width:100%;}
+    ol.progress-list li{font-size:.75rem;}
+  }
+
+  /* ---------- Print styles (used by the offline "Print / Save as PDF" fallback) ---------- */
+  @media print{
+    a.skip-link, header.site-header, footer.site-footer,
+    .progress-wrap, .locked-trail, .btn-row, .restart-link,
+    #live-status{
+      display:none !important;
+    }
+    body{ font-size:11pt; }
+    main{ padding:0; max-width:100%; }
+    table.summary-table th{ background:#000 !important; color:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .score-box{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <span class="brand-mark">Northeastern University <span>|</span> Entrepreneurship &amp; Innovation</span>
+    <span class="brand-mark">Persist or Pivot Challenge</span>
+  </div>
+</header>
+
+<main id="main-content">
+
+  <div id="app" role="region" aria-label="Persist or Pivot business model tutorial">
+    <!-- JS renders all screens into this container -->
+  </div>
+
+  <div id="live-status" class="visually-hidden" role="status" aria-live="polite"></div>
+
+</main>
+
+<footer class="site-footer">
+  Tutorial created by Lily Reilly, Entrepreneurship Librarian, Northeastern University &mdash; Persist or Pivot Innovation Challenge, Fall 2026.
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* =====================================================================
+     CASE DATA
+     Source: Frosty Data Inc. / Southwest Sizzle Data Centers Inc. case,
+     Pe-vs-Pi Business Model Canvas (9/1/2026 version).
+     Pe = Persist (Cooling as a Service). Pi = Pivot (Waste Heat Recovery).
+     Modifier values represent the risk/cost score assigned to each choice
+     in the source canvas. Positive Pe values in some cells and negative
+     Pi values in others are preserved exactly as documented.
+  ===================================================================== */
+  var STEPS = [
+    {
+      key: "segments",
+      number: 1,
+      shortLabel: "Business Model",
+      title: "Customer Segments & Key Resources",
+      subtitle: "Team Decision #1 \u2014 this sets the overall direction of Frosty Data Inc.\u2019s business model. Only one option may be chosen.",
+      options: [
+        {
+          id: "seg-pe",
+          path: "Pe",
+          title: "Persist \u2014 Cooling as a Service",
+          modifier: -2,
+          desc: "Frosty Data continues manufacturing cooling hardware but shifts to a service-based model: a three-year service contract in which data centers contract with Frosty Data to install and maintain cooling hardware, including all maintenance, adjustments, and repairs. Requires redesigning the sales funnel and a plan for how the change affects new and existing clients."
+        },
+        {
+          id: "seg-pi",
+          path: "Pi",
+          title: "Pivot \u2014 Waste Heat Recovery",
+          modifier: 2,
+          desc: "Frosty Data changes its business model to manufacturing and selling Waste Heat Recovery hardware. Higher cost and risk, as this pivot requires changing the entire manufacturing process."
+        }
+      ]
+    },
+    {
+      key: "value",
+      number: 2,
+      shortLabel: "Value Propositions",
+      title: "Value Propositions",
+      subtitle: "How will Frosty Data create value for Southwest Sizzle Data Centers Inc.? Your Step 1 choice determines which options are available below.",
+      options: [
+        {
+          id: "val-pe1",
+          path: "Pe",
+          title: "Getting the Job Done",
+          modifier: 0,
+          desc: "Providing the cooling service with no additional value adds."
+        },
+        {
+          id: "val-pe2",
+          path: "Pe",
+          title: "Risk Reduction",
+          modifier: 1,
+          desc: "Adding guarantees to the value proposition, e.g., a warranty on hardware or a guarantee of 95% data center uptime."
+        },
+        {
+          id: "val-pi1",
+          path: "Pi",
+          title: "Newness",
+          modifier: -1,
+          desc: "Capitalizing on Waste Heat Recovery being a new technology, e.g., marketing to clients the value of being an early adopter, embracing the future cooling standard today, and staying ahead of their competition."
+        },
+        {
+          id: "val-pi2",
+          path: "Pi",
+          title: "Cost Reduction",
+          modifier: 1,
+          desc: "Capitalizing on the cost reductions the service model allows, e.g., reduced server downtime and increased client satisfaction. (Note: the source canvas describes this option using Cooling-as-a-Service language under the Pivot\u2013Waste Heat Recovery path; presented here exactly as written in the source document.)"
+        }
+      ]
+    },
+    {
+      key: "channels",
+      number: 3,
+      shortLabel: "Channels",
+      title: "Channels",
+      subtitle: "How will Frosty Data reach Southwest Sizzle Data Centers Inc.? Only the options matching your Step 1 choice are shown below.",
+      options: [
+        {
+          id: "chan-pe1",
+          path: "Pe",
+          title: "Expand Internal Sales Force",
+          modifier: 1,
+          desc: "Recruit, hire, and train additional in-house sales staff."
+        },
+        {
+          id: "chan-pe2",
+          path: "Pe",
+          title: "Partner with Trade Organization",
+          modifier: 0,
+          desc: "Establish a sales agreement with a data center trade organization. Frosty Data will split the revenue from any accounts obtained through this arrangement."
+        },
+        {
+          id: "chan-pi1",
+          path: "Pi",
+          title: "Expand Internal Sales Force",
+          modifier: 1,
+          desc: "Recruit, hire, and train additional in-house sales staff. (Listed identically under both paths in the source canvas.)"
+        },
+        {
+          id: "chan-pi2",
+          path: "Pi",
+          title: "Partner with Trade Organization",
+          modifier: 0,
+          desc: "Establish a sales agreement with a data center trade organization. Frosty Data will split the revenue from any accounts obtained through this arrangement. (Listed identically under both paths in the source canvas.)"
+        }
+      ]
+    },
+    {
+      key: "relationships",
+      number: 4,
+      shortLabel: "Customer Relationships",
+      title: "Customer Relationships",
+      subtitle: "How will Frosty Data interact with Southwest Sizzle Data Centers Inc.? Only the options matching your Step 1 choice are shown below.",
+      options: [
+        {
+          id: "rel-pe1",
+          path: "Pe",
+          title: "Dedicated Personal Assistance",
+          modifier: 2,
+          desc: "Frosty Data assigns a dedicated account manager who is co-located at the client facility."
+        },
+        {
+          id: "rel-pe2",
+          path: "Pe",
+          title: "Automated",
+          modifier: -1,
+          desc: "Frosty Data manages customer relationships using a mix of high- and low-touch options: each client has an account manager assigned (not co-located), and clients have access to an automated dashboard that allows them to monitor cooling operations."
+        },
+        {
+          id: "rel-pi1",
+          path: "Pi",
+          title: "Personal Assistance",
+          modifier: 1,
+          desc: "Each client has an account manager assigned (not co-located)."
+        },
+        {
+          id: "rel-pi2",
+          path: "Pi",
+          title: "Self-Service",
+          modifier: -1,
+          desc: "Clients manage their Waste Heat Recovery hardware service requests through an automated troubleshooting and maintenance request system."
+        }
+      ]
+    },
+    {
+      key: "revenue",
+      number: 5,
+      shortLabel: "Revenue",
+      title: "Revenue Streams",
+      subtitle: "How will Frosty Data generate revenue from Southwest Sizzle Data Centers Inc.? Only the options matching your Step 1 choice are shown below.",
+      options: [
+        {
+          id: "rev-pe1",
+          path: "Pe",
+          title: "Subscription Fee",
+          modifier: 0,
+          desc: "Client pays a flat monthly rate for the cooling service."
+        },
+        {
+          id: "rev-pe2",
+          path: "Pe",
+          title: "Usage Fee",
+          modifier: 1,
+          desc: "Frosty Data monitors the client firm\u2019s cooling needs and charges based on usage. Requires building a monitoring platform and billing integration."
+        },
+        {
+          id: "rev-pi1",
+          path: "Pi",
+          title: "Asset Sales",
+          modifier: 0,
+          desc: "Frosty Data sells Waste Heat Recovery hardware to clients."
+        },
+        {
+          id: "rev-pi2",
+          path: "Pi",
+          title: "Lease",
+          modifier: 1,
+          desc: "Frosty Data leases Waste Heat Recovery hardware to clients for a two-year term. Requires creating a process to repurpose the hardware at the end of the lease term."
+        }
+      ]
+    }
+  ];
+
+  /* =====================================================================
+     STATE
+  ===================================================================== */
+  var state = {
+    screen: "intro",       // "intro" | "step" | "summary"
+    stepIndex: 0,
+    names: ["", ""],
+    choices: {},           // key: step.key -> option object chosen
+    lockedPath: null        // "Pe" or "Pi" once Step 1 is confirmed; restricts all later steps
+  };
+
+  var app = document.getElementById("app");
+  var liveStatus = document.getElementById("live-status");
+
+  function announce(msg){
+    liveStatus.textContent = "";
+    window.setTimeout(function(){ liveStatus.textContent = msg; }, 50);
+  }
+
+  function el(tag, attrs, children){
+    var node = document.createElement(tag);
+    attrs = attrs || {};
+    Object.keys(attrs).forEach(function(k){
+      if (k === "text") { node.textContent = attrs[k]; }
+      else if (k === "html") { node.innerHTML = attrs[k]; }
+      else if (k.indexOf("on") === 0 && typeof attrs[k] === "function") {
+        node.addEventListener(k.slice(2), attrs[k]);
+      } else {
+        node.setAttribute(k, attrs[k]);
+      }
+    });
+    (children || []).forEach(function(c){
+      if (c) node.appendChild(c);
+    });
+    return node;
+  }
+
+  function focusHeading(){
+    var h = app.querySelector("h1, h2");
+    if (h) {
+      h.setAttribute("tabindex", "-1");
+      h.focus();
+    }
+  }
+
+  /* =====================================================================
+     RENDER: INTRO SCREEN
+  ===================================================================== */
+  function renderIntro(){
+    app.innerHTML = "";
+
+    var wrap = el("div");
+
+    wrap.appendChild(el("h1", {text: "Frosty Data Inc.: Persist or Pivot Business Model Tutorial"}));
+    wrap.appendChild(el("p", {"class":"lede", text:
+      "Use this tutorial to work through the Frosty Data Inc. Business Model Canvas as a team, one decision at a time. Your team\u2019s choices here will guide your consultant recommendation for the Persist or Pivot event."}));
+
+    var notice = el("div", {"class":"notice"});
+    notice.appendChild(el("h3", {text:"Before you begin"}));
+    var list = el("ul", {"class":"plain"});
+    [
+      "Only one student should complete this tutorial on behalf of the entire team \u2014 discuss each decision together first.",
+      "Each step presents a locked choice: once you confirm an option, you cannot go back and change it, so decide as a team before confirming.",
+      "There are five decision points. Some options carry a risk/cost modifier (shown as a number) \u2014 consider this alongside the qualitative description.",
+      "At the end, you can download a PDF record of your team\u2019s names and final choices."
+    ].forEach(function(t){ list.appendChild(el("li", {text:t})); });
+    notice.appendChild(list);
+    wrap.appendChild(notice);
+
+    var card = el("div", {"class":"card"});
+    card.appendChild(el("h2", {text:"Team Members"}));
+    card.appendChild(el("p", {text:"Enter the name of every student on the team. Add rows if your team has more than two members."}));
+
+    var namesContainer = el("div", {id:"names-container"});
+    wrap.appendChild(card);
+    card.appendChild(namesContainer);
+    renderNameFields(namesContainer);
+
+    var addBtn = el("button", {
+      type:"button",
+      "class":"btn btn-secondary",
+      text:"+ Add another team member",
+      onclick: function(){
+        state.names.push("");
+        renderNameFields(namesContainer);
+      }
+    });
+    card.appendChild(addBtn);
+
+    var errorHolder = el("p", {"class":"error-text", id:"intro-error", "aria-live":"polite"});
+    errorHolder.style.display = "none";
+    card.appendChild(errorHolder);
+
+    var beginBtn = el("button", {
+      type:"button",
+      "class":"btn btn-accent",
+      text:"Begin Tutorial",
+      style:"margin-top:1rem;",
+      onclick: function(){
+        var trimmed = state.names.map(function(n){ return n.trim(); }).filter(function(n){ return n.length > 0; });
+        if (trimmed.length === 0) {
+          errorHolder.textContent = "Enter at least one team member name before beginning.";
+          errorHolder.style.display = "block";
+          return;
+        }
+        state.names = trimmed;
+        state.screen = "step";
+        state.stepIndex = 0;
+        render();
+      }
+    });
+    card.appendChild(beginBtn);
+
+    app.appendChild(wrap);
+    focusHeading();
+  }
+
+  function renderNameFields(container){
+    container.innerHTML = "";
+    state.names.forEach(function(name, idx){
+      var field = el("div", {"class":"name-field"});
+      var labelId = "name-label-" + idx;
+      field.appendChild(el("label", {"for":"name-input-" + idx, id:labelId, text:"Student " + (idx+1)}));
+      var input = el("input", {
+        type:"text",
+        id:"name-input-" + idx,
+        value:name,
+        autocomplete:"off",
+        oninput: function(e){ state.names[idx] = e.target.value; }
+      });
+      input.value = name;
+      field.appendChild(input);
+      if (state.names.length > 1) {
+        field.appendChild(el("button", {
+          type:"button",
+          "class":"remove-name-btn",
+          "aria-label":"Remove Student " + (idx+1),
+          text:"Remove",
+          onclick: function(){
+            state.names.splice(idx, 1);
+            renderNameFields(container);
+          }
+        }));
+      }
+      container.appendChild(field);
+    });
+  }
+
+  /* =====================================================================
+     RENDER: STEP SCREEN
+  ===================================================================== */
+  function renderStep(){
+    app.innerHTML = "";
+    var step = STEPS[state.stepIndex];
+    var wrap = el("div");
+
+    wrap.appendChild(renderProgress());
+    wrap.appendChild(renderLockedTrail());
+
+    wrap.appendChild(el("h2", {text: "Step " + step.number + " of " + STEPS.length + ": " + step.title}));
+    wrap.appendChild(el("p", {"class":"lede", text: step.subtitle}));
+
+    var card = el("div", {"class":"card"});
+
+    var visibleOptions = step.options;
+    if (state.lockedPath) {
+      visibleOptions = step.options.filter(function(o){ return o.path === state.lockedPath; });
+      var pathNote = el("p", {"class":"notice", style:"padding:.85rem 1rem; margin-bottom:1.25rem;"});
+      pathNote.appendChild(document.createTextNode(
+        "Your team chose " + (state.lockedPath === "Pe" ? "Persist" : "Pivot") +
+        " in Step 1, so only " + (state.lockedPath === "Pe" ? "Persist" : "Pivot") +
+        " options are available for the rest of this tutorial."
+      ));
+      card.appendChild(pathNote);
+    }
+
+    var fieldset = el("fieldset");
+    fieldset.appendChild(el("legend", {text:"Choose one option"}));
+
+    var selectedId = null;
+
+    visibleOptions.forEach(function(opt){
+      var optionWrap = el("label", {"class":"option", "for":"opt-" + opt.id});
+      var radio = el("input", {
+        type:"radio",
+        name:"step-choice",
+        id:"opt-" + opt.id,
+        value:opt.id,
+        onchange: function(){
+          selectedId = opt.id;
+          highlightSelected(fieldset, opt.id);
+          confirmBtn.disabled = false;
+        }
+      });
+      optionWrap.appendChild(radio);
+
+      var head = el("div", {"class":"opt-head"});
+      head.appendChild(el("span", {"class":"tag " + (opt.path === "Pe" ? "tag-pe" : "tag-pi"), text: opt.path === "Pe" ? "PERSIST" : "PIVOT"}));
+      head.appendChild(el("span", {"class":"opt-title", text: opt.title}));
+      head.appendChild(el("span", {"class":"opt-modifier", text: "Risk/cost modifier: " + formatModifier(opt.modifier)}));
+      optionWrap.appendChild(head);
+      optionWrap.appendChild(el("p", {"class":"opt-desc", text: opt.desc}));
+
+      fieldset.appendChild(optionWrap);
+    });
+
+    card.appendChild(fieldset);
+
+    var btnRow = el("div", {"class":"btn-row"});
+    var confirmBtn = el("button", {
+      type:"button",
+      "class":"btn btn-accent",
+      text:"Confirm & Continue",
+      disabled:"disabled",
+      onclick: function(){
+        if (!selectedId) return;
+        var chosen = visibleOptions.filter(function(o){ return o.id === selectedId; })[0];
+        state.choices[step.key] = chosen;
+        if (state.stepIndex === 0) {
+          state.lockedPath = chosen.path;
+        }
+        // Lock this step's inputs visually before moving on
+        announce(step.title + ": locked in " + chosen.title + ".");
+        if (state.stepIndex < STEPS.length - 1) {
+          state.stepIndex += 1;
+          state.screen = "step";
+        } else {
+          state.screen = "summary";
+        }
+        render();
+      }
+    });
+    confirmBtn.disabled = true;
+    btnRow.appendChild(confirmBtn);
+    card.appendChild(btnRow);
+
+    wrap.appendChild(card);
+    wrap.appendChild(renderRestartLink());
+
+    app.appendChild(wrap);
+    focusHeading();
+    announce("Step " + step.number + " of " + STEPS.length + ": " + step.title + ". Choose one option to continue.");
+  }
+
+  function highlightSelected(fieldset, selectedId){
+    var labels = fieldset.querySelectorAll(".option");
+    labels.forEach(function(lab){
+      var input = lab.querySelector("input[type=radio]");
+      if (input.value === selectedId) {
+        lab.classList.add("is-selected");
+      } else {
+        lab.classList.remove("is-selected");
+      }
+    });
+  }
+
+  function formatModifier(n){
+    if (n > 0) return "+" + n;
+    return String(n);
+  }
+
+  function renderProgress(){
+    var wrap = el("div", {"class":"progress-wrap"});
+    var list = el("ol", {"class":"progress-list", "aria-label":"Tutorial progress"});
+    STEPS.forEach(function(s, idx){
+      var status;
+      var cls = "";
+      if (state.choices[s.key]) { status = "Locked"; cls = "is-done"; }
+      else if (idx === state.stepIndex && state.screen === "step") { status = "Current"; cls = "is-current"; }
+      else { status = "Not started"; }
+      var li = el("li", {"class":cls});
+      li.appendChild(document.createTextNode("Step " + s.number + ": " + s.shortLabel));
+      li.appendChild(el("span", {"class":"step-status", text:status}));
+      list.appendChild(li);
+    });
+    wrap.appendChild(list);
+    return wrap;
+  }
+
+  function renderLockedTrail(){
+    var keys = Object.keys(state.choices);
+    var wrap = el("div", {"class":"locked-trail"});
+    if (keys.length === 0) return wrap;
+    STEPS.forEach(function(s){
+      var choice = state.choices[s.key];
+      if (!choice) return;
+      var item = el("div", {"class":"locked-item"});
+      var catLine = el("div", {"class":"locked-cat"});
+      catLine.appendChild(document.createTextNode(s.title + ": "));
+      var span = el("span", {"class":"locked-choice", text: choice.title});
+      catLine.appendChild(span);
+      catLine.appendChild(el("span", {"class":"tag tag-locked", text:"LOCKED", style:"margin-left:.5rem;"}));
+      item.appendChild(catLine);
+      wrap.appendChild(item);
+    });
+    return wrap;
+  }
+
+  function renderRestartLink(){
+    return el("button", {
+      type:"button",
+      "class":"restart-link",
+      text:"Start over (clears all locked choices)",
+      onclick: function(){
+        if (window.confirm("This will erase all locked choices and team names for this session. Start over?")) {
+          state = { screen:"intro", stepIndex:0, names:[""], choices:{}, lockedPath:null };
+          render();
+        }
+      }
+    });
+  }
+
+  /* =====================================================================
+     RENDER: SUMMARY SCREEN
+  ===================================================================== */
+  function renderSummary(){
+    app.innerHTML = "";
+    var wrap = el("div");
+
+    wrap.appendChild(el("h2", {text:"Team Summary: Frosty Data Inc. Business Model"}));
+    wrap.appendChild(el("p", {"class":"lede", text:
+      "Review your team\u2019s locked choices below. This worksheet does not tell you whether to persist or pivot \u2014 your team must still build the qualitative argument for your recommendation."}));
+
+    var total = 0;
+    STEPS.forEach(function(s){
+      var c = state.choices[s.key];
+      if (c) total += c.modifier;
+    });
+
+    var scoreBox = el("div", {"class":"score-box"});
+    scoreBox.appendChild(el("span", {"class":"score-num", text: formatModifier(total)}));
+    scoreBox.appendChild(el("span", {"class":"score-label", text:"Total risk/cost score across all five decisions"}));
+    wrap.appendChild(scoreBox);
+
+    var table = el("table", {"class":"summary-table"});
+    table.appendChild(el("caption", {text:"Locked decisions"}));
+    var thead = el("thead");
+    var headRow = el("tr");
+    ["Category", "Choice", "Path", "Risk/Cost Modifier"].forEach(function(h){
+      headRow.appendChild(el("th", {text:h, scope:"col"}));
+    });
+    thead.appendChild(headRow);
+    table.appendChild(thead);
+    var tbody = el("tbody");
+    STEPS.forEach(function(s){
+      var c = state.choices[s.key];
+      var row = el("tr");
+      row.appendChild(el("th", {text:s.title, scope:"row"}));
+      row.appendChild(el("td", {text: c ? c.title : "\u2014"}));
+      row.appendChild(el("td", {text: c ? (c.path === "Pe" ? "Persist" : "Pivot") : "\u2014"}));
+      row.appendChild(el("td", {text: c ? formatModifier(c.modifier) : "\u2014"}));
+      tbody.appendChild(row);
+    });
+    table.appendChild(tbody);
+    wrap.appendChild(table);
+
+    var namesCard = el("div", {"class":"card"});
+    namesCard.appendChild(el("h3", {text:"Team members on record", style:"margin-top:0;"}));
+    var namesList = el("ul", {"class":"plain"});
+    state.names.forEach(function(n){ namesList.appendChild(el("li", {text:n})); });
+    namesCard.appendChild(namesList);
+    wrap.appendChild(namesCard);
+
+    var btnRow = el("div", {"class":"btn-row"});
+    btnRow.appendChild(el("button", {
+      type:"button",
+      "class":"btn btn-accent",
+      text:"Download PDF Record (list format)",
+      onclick: exportPdf
+    }));
+    btnRow.appendChild(el("button", {
+      type:"button",
+      "class":"btn btn-accent",
+      text:"Download PDF (Business Model Canvas layout)",
+      onclick: exportCanvasPdf
+    }));
+    btnRow.appendChild(el("button", {
+      type:"button",
+      "class":"btn btn-secondary",
+      text:"Print / Save as PDF (no internet required)",
+      onclick: function(){
+        window.print();
+      }
+    }));
+    wrap.appendChild(btnRow);
+    wrap.appendChild(el("p", {style:"font-size:.85rem; color:#242424; margin-top:.5rem;", text:
+      "If the two Download buttons above don\u2019t produce a file, your network or browser may be blocking the PDF library. Use \u201cPrint / Save as PDF\u201d instead \u2014 in the print dialog that opens, choose \u201cSave as PDF\u201d (or \u201cMicrosoft Print to PDF\u201d) as the destination/printer."}));
+
+    wrap.appendChild(renderRestartLink());
+
+    app.appendChild(wrap);
+    focusHeading();
+    announce("Tutorial complete. Total risk/cost score: " + formatModifier(total) + ".");
+  }
+
+  /* =====================================================================
+     PDF EXPORT
+  ===================================================================== */
+  function exportPdf(){
+    if (!window.jspdf) {
+      window.alert("The PDF library could not be loaded (this usually means the browser or network blocked the connection to cdnjs.cloudflare.com). Use the \u201cPrint / Save as PDF\u201d button instead \u2014 it works without any internet connection.");
+      return;
+    }
+    try {
+    var doc = new window.jspdf.jsPDF({ unit:"pt", format:"letter" });
+    var marginX = 54;
+    var y = 56;
+    var lineHeight = 16;
+    var pageWidth = doc.internal.pageSize.getWidth();
+    var usableWidth = pageWidth - marginX * 2;
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(16);
+    doc.setTextColor(0,0,0);
+    doc.text("Persist or Pivot: Frosty Data Inc. Business Model Record", marginX, y);
+    y += lineHeight + 4;
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    doc.setTextColor(90,90,90);
+    doc.text("Northeastern University Innovation Challenge \u2014 Persist or Pivot", marginX, y);
+    y += lineHeight;
+    doc.text("Generated: " + new Date().toLocaleString(), marginX, y);
+    y += lineHeight + 10;
+
+    doc.setDrawColor(200,16,46);
+    doc.setLineWidth(2);
+    doc.line(marginX, y, pageWidth - marginX, y);
+    y += 20;
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(12);
+    doc.setTextColor(0,0,0);
+    doc.text("Team Members", marginX, y);
+    y += lineHeight + 2;
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(11);
+    state.names.forEach(function(n){
+      doc.text("\u2022 " + n, marginX + 8, y);
+      y += lineHeight;
+    });
+    y += 8;
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(12);
+    doc.text("Locked Decisions", marginX, y);
+    y += lineHeight + 2;
+
+    STEPS.forEach(function(s){
+      var c = state.choices[s.key];
+      if (y > 680) { doc.addPage(); y = 56; }
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(11);
+      doc.text(s.title + ":", marginX, y);
+      y += lineHeight;
+
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(11);
+      var choiceLine = c ? (c.title + " (" + (c.path === "Pe" ? "Persist" : "Pivot") + ", modifier " + formatModifier(c.modifier) + ")") : "No choice recorded";
+      var wrapped = doc.splitTextToSize(choiceLine, usableWidth - 10);
+      wrapped.forEach(function(line){
+        doc.text(line, marginX + 12, y);
+        y += lineHeight;
+      });
+      y += 4;
+    });
+
+    var total = 0;
+    STEPS.forEach(function(s){ var c = state.choices[s.key]; if (c) total += c.modifier; });
+
+    y += 6;
+    doc.setDrawColor(0,0,0);
+    doc.setLineWidth(1);
+    doc.line(marginX, y, pageWidth - marginX, y);
+    y += 20;
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(13);
+    doc.text("Total Risk/Cost Score: " + formatModifier(total), marginX, y);
+    y += lineHeight + 10;
+
+    doc.setFont("helvetica", "italic");
+    doc.setFontSize(9);
+    doc.setTextColor(90,90,90);
+    var disclaimerLines = doc.splitTextToSize(
+      "This score reflects the risk/cost modifiers assigned in the Frosty Data Inc. Business Model Canvas exercise. It is a decision-support input, not an automated recommendation \u2014 your team\u2019s final Persist or Pivot recommendation must still be supported by qualitative research and rationale.",
+      usableWidth
+    );
+    disclaimerLines.forEach(function(line){
+      doc.text(line, marginX, y);
+      y += 12;
+    });
+
+    y += 16;
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(8);
+    doc.setTextColor(120,120,120);
+    doc.text("Tutorial created by Lily Reilly, Entrepreneurship Librarian, Northeastern University.", marginX, y);
+
+    var fileSafeNames = state.names.join("_").replace(/[^a-z0-9_]/gi, "").slice(0, 40) || "team";
+    doc.save("PersistOrPivot_" + fileSafeNames + ".pdf");
+    announce("PDF downloaded.");
+    } catch (err) {
+      console.error("PDF export failed:", err);
+      window.alert("The PDF could not be created (" + (err && err.message ? err.message : "unknown error") + "). Try the \u201cPrint / Save as PDF\u201d button instead.");
+    }
+  }
+
+  /* =====================================================================
+     PDF EXPORT: BUSINESS MODEL CANVAS LAYOUT
+     Draws the standard nine-block canvas (Key Partners, Key Activities,
+     Key Resources, Value Propositions, Customer Relationships, Channels,
+     Customer Segments, Cost Structure, Revenue Streams) and fills each
+     block with the team's locked choice where the case provides one.
+     Key Partners, Key Activities, and Cost Structure have no decision
+     point in this case, so they are labeled as not used in this exercise.
+  ===================================================================== */
+  function exportCanvasPdf(){
+    if (!window.jspdf) {
+      window.alert("The PDF library could not be loaded (this usually means the browser or network blocked the connection to cdnjs.cloudflare.com). Use the \u201cPrint / Save as PDF\u201d button instead \u2014 it works without any internet connection.");
+      return;
+    }
+    try {
+    var doc = new window.jspdf.jsPDF({ unit:"pt", format:"letter", orientation:"landscape" });
+    var pageWidth = doc.internal.pageSize.getWidth();
+    var pageHeight = doc.internal.pageSize.getHeight();
+    var marginX = 36;
+    var y = 34;
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(15);
+    doc.setTextColor(0,0,0);
+    doc.text("Frosty Data Inc. \u2014 Business Model Canvas", marginX, y);
+    y += 16;
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    doc.setTextColor(90,90,90);
+    doc.text("Team: " + state.names.join(", "), marginX, y);
+    doc.text("Generated: " + new Date().toLocaleString(), pageWidth - marginX, y, { align: "right" });
+    y += 16;
+
+    var total = 0;
+    STEPS.forEach(function(s){ var c = state.choices[s.key]; if (c) total += c.modifier; });
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(10);
+    doc.setTextColor(0,0,0);
+    doc.text("Team decision: " + (state.lockedPath === "Pe" ? "Persist" : "Pivot") + "  |  Total risk/cost score: " + formatModifier(total), marginX, y);
+    y += 14;
+
+    doc.setDrawColor(200,16,46);
+    doc.setLineWidth(2);
+    doc.line(marginX, y, pageWidth - marginX, y);
+    y += 16;
+
+    var gridTop = y;
+    var footerReserve = 46;
+    var gridHeight = pageHeight - gridTop - footerReserve - marginX + 20;
+    var gridWidth = pageWidth - marginX * 2;
+    var colWidth = gridWidth / 5;
+    var topAreaHeight = gridHeight * 0.62;
+    var bottomAreaHeight = gridHeight - topAreaHeight;
+
+    var segChoice = state.choices["segments"];
+    var valChoice = state.choices["value"];
+    var chanChoice = state.choices["channels"];
+    var relChoice = state.choices["relationships"];
+    var revChoice = state.choices["revenue"];
+
+    function choiceText(c){
+      if (!c) return "No choice recorded.";
+      return c.title + " (" + (c.path === "Pe" ? "Persist" : "Pivot") + ", modifier " + formatModifier(c.modifier) + "): " + c.desc;
+    }
+
+    function drawBlock(x, blockY, w, h, label, bodyText, isPlaceholder){
+      doc.setDrawColor(0,0,0);
+      doc.setLineWidth(1);
+      doc.rect(x, blockY, w, h);
+
+      var labelHeight = 16;
+      doc.setFillColor(244,244,244);
+      doc.rect(x, blockY, w, labelHeight, "F");
+      doc.rect(x, blockY, w, labelHeight); // re-stroke border over fill
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(8.5);
+      doc.setTextColor(0,0,0);
+      doc.text(label.toUpperCase(), x + 5, blockY + 11);
+
+      var padX = 5;
+      var textWidth = w - padX * 2;
+      var textY = blockY + labelHeight + 11;
+      var maxTextHeight = h - labelHeight - 8;
+      var lineH = 8.4;
+      var maxLines = Math.max(1, Math.floor(maxTextHeight / lineH));
+
+      doc.setFont("helvetica", isPlaceholder ? "italic" : "normal");
+      doc.setFontSize(7.6);
+      doc.setTextColor(isPlaceholder ? 130 : 20, isPlaceholder ? 130 : 20, isPlaceholder ? 130 : 20);
+
+      var lines = doc.splitTextToSize(bodyText, textWidth);
+      if (lines.length > maxLines) {
+        lines = lines.slice(0, maxLines);
+        var lastLine = lines[lines.length - 1];
+        while (doc.getTextWidth(lastLine + "\u2026") > textWidth && lastLine.length > 0) {
+          lastLine = lastLine.slice(0, -1);
+        }
+        lines[lines.length - 1] = lastLine + "\u2026";
+      }
+      lines.forEach(function(line){
+        doc.text(line, x + padX, textY);
+        textY += lineH;
+      });
+    }
+
+    // Column 1: Key Partners (full height, not used in this case)
+    drawBlock(marginX, gridTop, colWidth, topAreaHeight,
+      "Key Partners", "Not used in this exercise \u2014 the case does not include a partnership decision.", true);
+
+    // Column 2: Key Activities (top) / Key Resources (bottom)
+    drawBlock(marginX + colWidth, gridTop, colWidth, topAreaHeight / 2,
+      "Key Activities", "Not used in this exercise \u2014 the case does not include an activities decision.", true);
+    drawBlock(marginX + colWidth, gridTop + topAreaHeight / 2, colWidth, topAreaHeight / 2,
+      "Key Resources", "Same decision as Customer Segments: " + choiceText(segChoice));
+
+    // Column 3: Value Propositions (full height)
+    drawBlock(marginX + colWidth * 2, gridTop, colWidth, topAreaHeight,
+      "Value Propositions", choiceText(valChoice));
+
+    // Column 4: Customer Relationships (top) / Channels (bottom)
+    drawBlock(marginX + colWidth * 3, gridTop, colWidth, topAreaHeight / 2,
+      "Customer Relationships", choiceText(relChoice));
+    drawBlock(marginX + colWidth * 3, gridTop + topAreaHeight / 2, colWidth, topAreaHeight / 2,
+      "Channels", choiceText(chanChoice));
+
+    // Column 5: Customer Segments (full height)
+    drawBlock(marginX + colWidth * 4, gridTop, colWidth, topAreaHeight,
+      "Customer Segments", "Southwest Sizzle Data Centers Inc. is the only customer segment in this case. Team Decision #1: " + choiceText(segChoice));
+
+    // Bottom row: Cost Structure (left) / Revenue Streams (right)
+    var bottomY = gridTop + topAreaHeight;
+    var costWidth = gridWidth * 0.42;
+    var revWidth = gridWidth - costWidth;
+    drawBlock(marginX, bottomY, costWidth, bottomAreaHeight,
+      "Cost Structure", "Not itemized in this exercise \u2014 the case does not include a cost structure decision.", true);
+    drawBlock(marginX + costWidth, bottomY, revWidth, bottomAreaHeight,
+      "Revenue Streams", choiceText(revChoice));
+
+    var footerY = gridTop + gridHeight + 18;
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(7.5);
+    doc.setTextColor(120,120,120);
+    doc.text(
+      "Blocks marked \u201cnot used in this exercise\u201d have no decision point in the Frosty Data Inc. case. This canvas is a decision-support record, not an automated recommendation.",
+      marginX, footerY
+    );
+    doc.text("Tutorial created by Lily Reilly, Entrepreneurship Librarian, Northeastern University.", marginX, footerY + 11);
+
+    var fileSafeNames2 = state.names.join("_").replace(/[^a-z0-9_]/gi, "").slice(0, 40) || "team";
+    doc.save("PersistOrPivot_Canvas_" + fileSafeNames2 + ".pdf");
+    announce("Business Model Canvas PDF downloaded.");
+    } catch (err) {
+      console.error("Canvas PDF export failed:", err);
+      window.alert("The PDF could not be created (" + (err && err.message ? err.message : "unknown error") + "). Try the \u201cPrint / Save as PDF\u201d button instead.");
+    }
+  }
+
+  /* =====================================================================
+     MAIN RENDER DISPATCH
+  ===================================================================== */
+  function render(){
+    if (state.screen === "intro") { renderIntro(); }
+    else if (state.screen === "step") { renderStep(); }
+    else if (state.screen === "summary") { renderSummary(); }
+  }
+
+  render();
+})();
+</script>
+
+</body>
+</html>
